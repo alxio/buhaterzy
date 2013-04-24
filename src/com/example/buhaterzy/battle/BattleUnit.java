@@ -6,20 +6,25 @@ public class BattleUnit {
 	private Unit mUnit;
 	private int mCount;
 	private Position mPosition;
-	private boolean mSide; //true if attacker
+	private int mSide; //ATT or DEF
 	private int mHp;
 	
-	public BattleUnit(Unit u, int count, int slot, boolean side){
+	public static final int ATT = 0;
+	public static final int DEF = 1;
+	
+	public BattleUnit(Unit u, int count, int slot, int side){
 		mUnit = u;
 		mCount = count;
 		mSide = side;
 		mPosition = new Position();
-		mPosition.x = side?0:10;
+		mPosition.x = (side == ATT)?0:10;
 		mPosition.y = 2*slot;
 		mHp = u.hp;
 	}
 	
-	//return if unit died
+	/**
+	 * @return if unit died
+	 */
 	public boolean takeHit(int damage){
 		int dead = damage/mUnit.hp;
 		int rest = damage%mUnit.hp;
@@ -42,12 +47,16 @@ public class BattleUnit {
 		return mUnit.range;
 	}
 	
-	public boolean getSide(){
+	public int getSide(){
 		return mSide;
 	}
 	
 	public Position getPosition(){
 		return new Position(mPosition);
+	}
+	
+	public void setPosition(Position pos){
+		mPosition = pos;
 	}
 	
 	public void move(Position p){
