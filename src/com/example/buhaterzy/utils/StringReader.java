@@ -1,4 +1,4 @@
-package com.example.buhaterzy;
+package com.example.buhaterzy.utils;
 
 import java.io.InputStream;
 
@@ -16,11 +16,10 @@ public class StringReader {
 		return false;
 	}
 	
-	static String read(int id){
+	public static String read(int id){
 	    try {
 	        Resources res = a.getResources();
-	        //InputStream in_s = res.openRawResource(R.raw.1);
-	        InputStream in_s = null;
+	        InputStream in_s = res.openRawResource(id);
 	        byte[] b = new byte[in_s.available()];
 	        in_s.read(b);
 	        return new String(b);

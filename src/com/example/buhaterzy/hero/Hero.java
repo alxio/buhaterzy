@@ -1,6 +1,8 @@
-package com.example.buhaterzy;
+package com.example.buhaterzy.hero;
 
-import java.util.ArrayList;
+import com.example.buhaterzy.units.Unit;
+import com.example.buhaterzy.units.UnitBuilder;
+import com.example.buhaterzy.units.X;
 
 public class Hero {
 	private class Squad{
@@ -22,11 +24,13 @@ public class Hero {
 		units[i].count = count;
 	}
 	
+	//only for tests
+	//hero with 4 troops: a1 alfons, a2 alfons, d1 dziwka, d2 dziwka
 	public Hero(int a1, int a2, int d1, int d2){
-		units[0].unit = UnitFactory.getUnit(R.raw.alfons, R.drawable.alfons);
-		units[1].unit = UnitFactory.getUnit(R.raw.alfons, R.drawable.alfons);
-		units[2].unit = UnitFactory.getUnit(R.raw.dziwka, R.drawable.dziwka);
-		units[3].unit = UnitFactory.getUnit(R.raw.dziwka, R.drawable.dziwka);
+		units[0].unit = UnitBuilder.getUnit(X.ALFONS);
+		units[1].unit = UnitBuilder.getUnit(X.ALFONS);
+		units[2].unit = UnitBuilder.getUnit(X.DZIWKA);
+		units[3].unit = UnitBuilder.getUnit(X.DZIWKA);
 		units[0].count = a1;
 		units[1].count = a2;
 		units[2].count = d1;

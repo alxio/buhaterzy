@@ -1,6 +1,6 @@
-package com.example.buhaterzy;
+package com.example.buhaterzy.battle;
 
-import java.util.Comparator;
+import com.example.buhaterzy.units.Unit;
 
 public class BattleUnit {
 	private Unit mUnit;

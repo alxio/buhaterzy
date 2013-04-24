@@ -1,4 +1,4 @@
-package com.example.buhaterzy;
+package com.example.buhaterzy.battle;
 
 public class Position {
 	public int x;

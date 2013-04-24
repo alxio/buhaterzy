@@ -1,4 +1,6 @@
-package com.example.buhaterzy;
+package com.example.buhaterzy.units;
+
+import com.example.buhaterzy.R;
 
 public class X {
 	public int id;

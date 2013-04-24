@@ -1,7 +1,9 @@
-package com.example.buhaterzy;
+package com.example.buhaterzy.battle;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import com.example.buhaterzy.hero.Hero;
 
 public class BattleGround {
 	public static final int W = 10;
