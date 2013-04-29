@@ -24,9 +24,13 @@ public class Hero {
 		units[i].count = count;
 	}
 	
+	
+	
 	//only for tests
 	//hero with 4 troops: a1 alfons, a2 alfons, d1 dziwka, d2 dziwka
 	public Hero(int a1, int a2, int d1, int d2){
+		for(int i=0;i<4;i++)
+			units[i] = new Squad();
 		units[0].unit = UnitBuilder.getUnit(X.ALFONS);
 		units[1].unit = UnitBuilder.getUnit(X.ALFONS);
 		units[2].unit = UnitBuilder.getUnit(X.DZIWKA);

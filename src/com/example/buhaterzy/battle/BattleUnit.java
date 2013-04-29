@@ -17,7 +17,7 @@ public class BattleUnit {
 		mCount = count;
 		mSide = side;
 		mPosition = new Position();
-		mPosition.x = (side == ATT)?0:10;
+		mPosition.x = (side == ATT)?0:9;
 		mPosition.y = 2*slot;
 		mHp = u.hp;
 	}
@@ -61,5 +61,9 @@ public class BattleUnit {
 	
 	public void move(Position p){
 		mPosition = new Position(p);
+	}
+	
+	public int getImage(){
+		return mUnit.imageId;
 	}
 }

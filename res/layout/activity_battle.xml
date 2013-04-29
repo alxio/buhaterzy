@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BattleActivity"
+    android:background="#ffffff"
+    
+>
+<!--
+
+
+
+
+
+
+
+
+
+
+
+-->
+<LinearLayout
+        android:id="@+id/battle_grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        android:layout_margin="16px"
+>
+</LinearLayout>
+<LinearLayout
+        android:id="@+id/battle_buttons"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_margin="16px"
+>
+    <Button
+        android:id="@+id/battle_button_cast"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="cast spell"
+    />
+        <Button
+        android:id="@+id/battle_button_run"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="run away"
+    />
+            <Button
+        android:id="@+id/battle_button_wait"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="wait"
+    />
+                <Button
+        android:id="@+id/battle_button_stats"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="show stats"
+    />
+</LinearLayout>
+
+</LinearLayout>

@@ -9,9 +9,10 @@ import com.example.buhaterzy.hero.Hero;
 
 public class BattleGround {
 	public static final int W = 10;
-	public static final int H = 7;
-	private ArrayList<BattleUnit> units;
+	public static final int H = 7;   
+	public ArrayList<BattleUnit> units;
 	private int current = 0;
+	
 	
 	public BattleGround(Hero att, Hero def){
 		units = new ArrayList<BattleUnit>();
@@ -74,7 +75,10 @@ public class BattleGround {
 		int[][] map = new int[W][H];
 		BattleUnit u = units.get(current);
 		for(BattleUnit bu : units){
-			map[bu.getPosition().x][bu.getPosition().y] = -1;
+			if(bu.getSide() == u.getSide())
+				map[bu.getPosition().x][bu.getPosition().y] = -3;
+			else
+				map[bu.getPosition().x][bu.getPosition().y] = -1;
 		}
 		int x = u.getPosition().x;
 		int y = u.getPosition().y;
@@ -100,19 +104,19 @@ public class BattleGround {
 				if(!validate(map,next))continue;
 				if(map[next.x][next.y] == -1){
 					map[next.x][next.y] = -2;
-					continue;
 				}
+				if(map[next.x][next.y] < 0) continue;
 				map[next.x][next.y] = map[p.x][p.y] + 1;
 				q.add(next);
-			}
+			} 
 		}
 	}
 
 	private boolean validate(int[][] map, Position p) {
 		if(p.x < 0) return false;
 		if(p.x >= W) return false;
-		if(p.x < 0) return false;
-		if(p.x >= H) return false;
+		if(p.y < 0) return false;
+		if(p.y >= H) return false;
 		return map[p.x][p.y] < 1;
 	}
 }
