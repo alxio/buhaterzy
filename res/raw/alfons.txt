@@ -1,5 +1,6 @@
+ID:1
 HP:10
 DMG:2
 RANGE:3
 SPEED:4
-NAME:Dziwka
+NAME:Alfons

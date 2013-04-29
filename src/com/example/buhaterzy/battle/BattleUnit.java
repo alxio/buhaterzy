@@ -5,9 +5,10 @@ import com.example.buhaterzy.units.Unit;
 public class BattleUnit {
 	private Unit mUnit;
 	private int mCount;
+	private int mHp;  
 	private Position mPosition;
 	private int mSide; //ATT or DEF
-	private int mHp;
+
 	
 	public static final int ATT = 0;
 	public static final int DEF = 1;
@@ -35,20 +36,24 @@ public class BattleUnit {
 		return mCount == 0;
 	}
 	
+	public int getCount() {
+		return mCount;
+	}
+
+	public int getHp() {
+		return mHp;
+	}
+	
 	public int getDmg(){
 		return mCount*mUnit.dmg;
 	}
-	
-	public int getSpeed(){
-		return mUnit.speed;
-	}
-	
-	public int getRange(){
-		return mUnit.range;
-	}
-	
+		
 	public int getSide(){
 		return mSide;
+	}
+	
+	public Unit getUnit(){
+		return mUnit;
 	}
 	
 	public Position getPosition(){
@@ -61,9 +66,5 @@ public class BattleUnit {
 	
 	public void move(Position p){
 		mPosition = new Position(p);
-	}
-	
-	public int getImage(){
-		return mUnit.imageId;
 	}
 }

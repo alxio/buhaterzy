@@ -1,5 +1,6 @@
+ID:2
 HP:100
 DMG:20
 RANGE:30
 SPEED:40
-NAME:Alfons
+NAME:Dziwka

@@ -35,7 +35,7 @@ public class BattleGround {
 	
 	public void attackAction(Position from, Position target){
 		move(from);
-		BattleUnit attacker = units.get(current);
+		BattleUnit attacker = getCurrentUnit();
 		BattleUnit defender = findUnit(target);
 		int dmg = attacker.getDmg();
 		if(defender.takeHit(dmg)){ //defender died
@@ -66,14 +66,14 @@ public class BattleGround {
 	}
 	
 	private void move(Position dest){
-		BattleUnit u = units.get(current);
+		BattleUnit u = getCurrentUnit();
 		u.setPosition(dest);
 	}
 	
 	//Positive values on map are accessible. -2 on enemy unit u can attack.
 	public int[][] getPossibleMoves(){
 		int[][] map = new int[W][H];
-		BattleUnit u = units.get(current);
+		BattleUnit u = getCurrentUnit();
 		for(BattleUnit bu : units){
 			if(bu.getSide() == u.getSide())
 				map[bu.getPosition().x][bu.getPosition().y] = -3;
@@ -83,20 +83,20 @@ public class BattleGround {
 		int x = u.getPosition().x;
 		int y = u.getPosition().y;
 		map[x][y] = 1;
-		bfs(map, u.getPosition(), u.getSpeed());
+		bfs(map, u.getPosition(), u.getUnit().speed);
 		return map;
 	}
-
+ 
 	private void bfs(int[][] map, Position pos, int range) {
 		Queue<Position>q = new LinkedList<Position>();
 		q.add(pos);
 		while(!q.isEmpty()){
 			Position p = q.poll();
-			if(map[p.x][p.y] == range) continue;
+			if(map[p.x][p.y] > range) continue;
 			
 			Position[] neigh = new Position[4];
 			neigh[0] = new Position(p.x-1, p.y);
-			neigh[1] = new Position(p.x+1, p.y);
+			neigh[1] = new Position(p.x+1, p.y); 
 			neigh[2] = new Position(p.x, p.y-1);
 			neigh[3] = new Position(p.x, p.y+1);
 			
@@ -118,5 +118,9 @@ public class BattleGround {
 		if(p.y < 0) return false;
 		if(p.y >= H) return false;
 		return map[p.x][p.y] < 1;
+	}
+	
+	public BattleUnit getCurrentUnit(){
+		return units.get(current);
 	}
 }

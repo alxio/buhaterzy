@@ -3,12 +3,16 @@ package com.example.buhaterzy.battle;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.ImageView;
 
 import com.example.buhaterzy.R;
 import com.example.buhaterzy.hero.Hero;
@@ -27,7 +31,21 @@ public class BattleActivity extends Activity implements OnClickListener {
 	
 	@Override
 	public void onClick(View v){
-		runBattle();
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	    LayoutInflater inflater = getLayoutInflater();
+	    View alertView = inflater.inflate(R.layout.stats_layout, null);
+	    
+		BattleUnit bu = mBattleGround.getCurrentUnit();
+		((TextView)alertView.findViewById(R.id.count)).setText(""+bu.getCount());
+		((TextView)alertView.findViewById(R.id.hp)).setText(""+bu.getUnit().hp);
+		((TextView)alertView.findViewById(R.id.left)).setText(""+bu.getHp());
+		((TextView)alertView.findViewById(R.id.dmg)).setText(""+bu.getUnit().dmg);
+		((TextView)alertView.findViewById(R.id.speed)).setText(""+bu.getUnit().speed);
+	    ((ImageView)alertView.findViewById(R.id.image)).setImageResource(bu.getUnit().imageBig);
+	    builder.setView(alertView);
+		AlertDialog alertDialog = builder.create();
+		alertDialog.setTitle(bu.getUnit().name); 		
+		alertDialog.show();
 	}
 	
 	@Override
@@ -70,7 +88,7 @@ public class BattleActivity extends Activity implements OnClickListener {
 		 
 		for(BattleUnit u : mBattleGround.units){
 			Position p = u.getPosition();
-			mFields.get(p.x).get(p.y).setImageResource(u.getImage());
+			mFields.get(p.x).get(p.y).setImageResource(u.getUnit().imageId);
 		}
 		int[][] moves = mBattleGround.getPossibleMoves();
 		for(int i=0;i<moves.length;i++)

@@ -9,7 +9,7 @@ public class UnitBuilder {
 		Unit u = sUnits.get(x.id);
 		if(u != null) return u;
 		String data = StringReader.read(x.id);
-		u = new Unit(data, x.image);
+		u = new Unit(data, x.image, x.imageBig);
 		sUnits.put(x.id, u);
 		return u;
 	}
